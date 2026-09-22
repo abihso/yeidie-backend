@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yiedie · Backend demo</title>
+    <link rel="stylesheet" href="/demo/demo.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script type="module" src="/demo/demo.js"></script>
+  </head>
+  <body>
+    <header><div><strong>Yiedie</strong><span>Bookings, community & calls · development demo</span></div><button id="logout" hidden>Sign out</button></header>
+    <p id="notice" role="status" aria-live="polite">Connecting…</p>
+    <section id="auth" class="card">
+      <h1>Connect with your community</h1>
+      <p>Use separate browser profiles or an incognito window for separate accounts.</p>
+      <form id="auth-form">
+        <label>Full name (for registration)<input name="fullName" autocomplete="name" /></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+        <label>Password (10–72 characters)<input name="password" type="password" minlength="10" maxlength="72" autocomplete="current-password" required /></label>
+        <label>Account type<select name="role"><option value="client">Client</option><option value="counsellor">Counsellor</option></select></label>
+        <div class="actions"><button type="submit" value="login">Sign in</button><button type="submit" value="register" class="secondary">Create account</button></div>
+      </form>
+    </section>
+    <main id="workspace" hidden>
+      <section class="card">
+        <h2 id="greeting">People</h2>
+        <button id="refresh-people" class="secondary">Refresh people</button>
+        <div id="people"></div>
+        <form id="conversation-form">
+          <label>Group name (when selecting two or more people)<input name="title" maxlength="120" /></label>
+          <button>Create conversation with selected people</button>
+        </form>
+        <h3>Your conversations</h3><div id="conversations"></div>
+      </section>
+      <section class="card">
+        <h2 id="chat-title">Choose a conversation</h2>
+        <div class="actions"><button id="audio-call" disabled>Voice call</button><button id="video-call" disabled>Video call</button></div>
+        <div id="messages" aria-live="polite"></div>
+        <form id="message-form"><label>Message<input name="body" maxlength="4000" required autocomplete="off" /></label><button id="send-message" disabled>Send</button></form>
+        <h3>Incoming calls</h3><div id="invitations"></div>
+        <div id="call-panel" hidden>
+          <h3>In a call</h3><div id="videos"><video id="local-video" autoplay muted playsinline></video></div>
+          <div class="actions"><button id="toggle-mic">Mute mic</button><button id="toggle-camera">Camera off</button><button id="leave-call" class="secondary">Leave</button><button id="end-call" class="danger">End for everyone</button></div>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Counselling sessions</h2>
+        <form id="availability-form" hidden>
+          <h3>Publish your availability</h3>
+          <label>Start (your local time)<input name="startsAt" type="datetime-local" required /></label>
+          <label>End (your local time)<input name="endsAt" type="datetime-local" required /></label>
+          <button>Publish slot</button>
+        </form>
+        <div id="booking-picker"><label>Counsellor<select id="counsellors"><option value="">Choose a counsellor</option></select></label><div id="slots"></div></div>
+        <h3>Your bookings</h3><button id="refresh-bookings" class="secondary">Refresh bookings</button><div id="bookings"></div>
+      </section>
+    </main>
+  </body>
+</html>

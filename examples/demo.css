@@ -1,0 +1,31 @@
+:root { font-family: system-ui, sans-serif; color: #172349; background: #f2f5fc; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; }
+header { display: flex; align-items: center; justify-content: space-between; max-width: 1500px; margin: auto; }
+header strong { font-size: 28px; color: #190080; }
+header span { display: block; margin-top: 4px; color: #52617c; }
+main { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 20px; max-width: 1500px; margin: auto; align-items: start; }
+.card { background: white; border: 1px solid #d7dfee; border-radius: 16px; padding: 22px; }
+#auth { max-width: 520px; margin: 36px auto; }
+h1, h2, h3 { margin-top: 0; }
+h3 { margin-top: 24px; }
+label { display: block; font-size: 14px; margin: 14px 0; }
+input, select { width: 100%; padding: 11px; border: 1px solid #b9c7e0; border-radius: 7px; margin-top: 6px; font: inherit; }
+input[type=checkbox] { width: auto; margin-right: 10px; }
+button { padding: 10px 13px; border: 0; border-radius: 7px; background: #211284; color: white; cursor: pointer; font: inherit; font-size: 14px; }
+button:disabled { opacity: .5; cursor: default; }
+button.secondary { background: #e8ecf9; color: #211284; }
+button.danger { background: #a22539; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.row { padding: 12px 0; border-bottom: 1px solid #e6eaf2; overflow-wrap: anywhere; }
+.row button { margin: 6px 6px 0 0; }
+#notice { max-width: 1500px; min-height: 24px; margin: 20px auto; color: #294c75; }
+#notice.error { color: #a22539; }
+#messages { min-height: 180px; max-height: 350px; overflow-y: auto; margin: 20px 0; }
+.message { padding: 9px 12px; background: #f0f3fb; margin-bottom: 8px; border-radius: 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.message strong { display: block; font-size: 12px; margin-bottom: 4px; }
+#videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+video { width: 100%; border-radius: 8px; background: #11152a; }
+[hidden] { display: none !important; }
+@media (max-width: 1100px) { main { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) { body { padding: 14px; } main { grid-template-columns: 1fr; } }
