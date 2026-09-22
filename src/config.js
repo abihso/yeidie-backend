@@ -32,7 +32,7 @@ export function isOriginAllowed(origin, allowedOrigins = []) {
 }
 
 export function readConfig(env = process.env) {
-  const defaultSameSite = env.NODE_ENV === "production" ? "None" : "lax";
+  const defaultSameSite = env.NODE_ENV === "production" ? "none" : "lax";
   const { value, error } = Joi.object({
     NODE_ENV: Joi.string()
       .valid("development", "test", "production")
