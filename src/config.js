@@ -41,7 +41,7 @@ export function readConfig(env = process.env) {
     DATABASE_URL: Joi.string()
       .pattern(/^postgres(?:ql)?:\/\/.+$/i)
       .message(
-        '"DATABASE_URL" must be a valid postgres or postgresql connection string',
+        `"DATABASE_URL ${value.DATABASE_URL} " must be a valid postgres or postgresql connection string`,
       )
       .required(),
     SESSION_SECRET: Joi.string().required(),
