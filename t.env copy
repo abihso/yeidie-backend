@@ -1,0 +1,19 @@
+NODE_ENV=development
+HOST=127.0.0.1
+PORT=4000
+# DATABASE_URL=postgresql://yiedie:yiedie_local@localhost:5432/yiedie
+DATABASE_URL=postgresql://neondb_owner:npg_vJ4xjhgeFLK8@ep-shy-shadow-awzfizlo-pooler.c-12.us-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require
+
+# Replace with: node -e "console.log(require('node:crypto').randomBytes(48).toString('hex'))"
+SESSION_SECRET="abihsoloismyguythisisaboywhowantstobegreatinthefutureabihsoloismyguythisisaboywhowantstobegreatinthefutureabihsoloismyguythisisaboywhowantstobegreatinthefuture"
+SESSION_HOURS=24
+CLIENT_ORIGINS=http://localhost:5173,http://127.0.0.1:5173,http://localhost:5000,http://127.0.0.1:5000
+COOKIE_SAME_SITE=lax
+# Set to your trusted proxy hop count only when deploying behind a reverse proxy.
+TRUST_PROXY=0
+ENABLE_DEMO=false
+STUN_URLS=stun:stun.l.google.com:19302
+# Configure a reachable coturn server with use-auth-secret and the same static-auth-secret.
+# The API generates short-lived credentials; the shared secret stays on the server.
+TURN_URLS=
+TURN_SECRET=

@@ -102,10 +102,15 @@ export function readConfig(env = process.env) {
       "TURN_SECRET must contain at least 32 characters when TURN_URLS is set.",
     );
   }
+  const host =
+    value.NODE_ENV === "production" && value.HOST === "127.0.0.1"
+      ? "0.0.0.0"
+      : value.HOST;
+
   return {
     production: value.NODE_ENV === "production",
     port: value.PORT,
-    host: value.HOST,
+    host,
     databaseUrl: value.DATABASE_URL,
     sessionSecret: value.SESSION_SECRET,
     sessionMaxAge: value.SESSION_HOURS * 3600000,
