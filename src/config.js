@@ -49,9 +49,16 @@ export function readConfig(env = process.env) {
     CLIENT_ORIGINS: Joi.string().default(
       "https://pro-yiedie.vercel.app,http://localhost:5173,http://localhost:3000,http://localhost:4173,http://localhost:4000,http://localhost:5000,http://127.0.0.1:5173,http://127.0.0.1:3000,http://127.0.0.1:4173,http://127.0.0.1:4000,http://127.0.0.1:5000",
     ),
-    TRUST_PROXY: Joi.number().integer().min(0).max(5).default(0),
+    // Render terminates HTTPS at its proxy; secure session cookies need Express
+    // to recognize the forwarded protocol. Explicit settings still take priority.
+    TRUST_PROXY: Joi.number()
+      .integer()
+      .min(0)
+      .max(5)
+      .default(env.RENDER === "true" ? 1 : 0),
     COOKIE_SAME_SITE: Joi.string()
-      .valid("lax", "strict", "None")
+      .lowercase()
+      .valid("lax", "strict", "none")
       .default(defaultSameSite),
     SESSION_HOURS: Joi.number().integer().min(1).max(168).default(24),
     STUN_URLS: Joi.string().allow("").default("stun:stun.l.google.com:19302"),

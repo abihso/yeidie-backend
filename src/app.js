@@ -81,7 +81,6 @@ export function createApplication({ pool, config, sessionStore }) {
     "/uploads",
     (req, res, next) => {
       res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-      res.setHeader("Access-Control-Allow-Origin", "*");
       next();
     },
     express.static(fileURLToPath(new URL("../uploads/", import.meta.url))),
