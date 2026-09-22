@@ -32,6 +32,7 @@ export function isOriginAllowed(origin, allowedOrigins = []) {
 }
 
 export function readConfig(env = process.env) {
+  const defaultSameSite = env.NODE_ENV === "production" ? "None" : "lax";
   const { value, error } = Joi.object({
     NODE_ENV: Joi.string()
       .valid("development", "test", "production")
@@ -51,7 +52,7 @@ export function readConfig(env = process.env) {
     TRUST_PROXY: Joi.number().integer().min(0).max(5).default(0),
     COOKIE_SAME_SITE: Joi.string()
       .valid("lax", "strict", "none")
-      .default("lax"),
+      .default(defaultSameSite),
     SESSION_HOURS: Joi.number().integer().min(1).max(168).default(24),
     STUN_URLS: Joi.string().allow("").default("stun:stun.l.google.com:19302"),
     TURN_URLS: Joi.string().allow("").default(""),

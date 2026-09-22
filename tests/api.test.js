@@ -6,6 +6,18 @@ import { createFixture, testPool } from "./helpers.js";
 import { migrate } from "../src/db/migrate.js";
 import { startServer } from "../src/index.js";
 
+test("production defaults use cross-site cookies for deployed frontends", async () => {
+  const { readConfig } = await import("../src/config.js");
+  const config = readConfig({
+    NODE_ENV: "production",
+    SESSION_SECRET: "tests-only-long-session-secret-do-not-use-in-production",
+    CLIENT_ORIGINS: "https://app.example.com",
+  });
+
+  assert.equal(config.production, true);
+  assert.equal(config.sameSite, "none");
+});
+
 test("wildcard client origins are accepted for preview domains", async (t) => {
   const f = await createFixture(t, {
     clientOrigins: ["https://*.example.test", "http://localhost:5173"],
