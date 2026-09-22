@@ -47,7 +47,7 @@ export function readConfig(env = process.env) {
     //   .required(),
     SESSION_SECRET: Joi.string().required(),
     CLIENT_ORIGINS: Joi.string().default(
-      "http://localhost:5173,http://localhost:3000,http://localhost:4173,http://localhost:4000,http://localhost:5000,http://127.0.0.1:5173,http://127.0.0.1:3000,http://127.0.0.1:4173,http://127.0.0.1:4000,http://127.0.0.1:5000",
+      "http://localhost:5173,http://localhost:3000,http://localhost:4173,http://localhost:4000,http://localhost:5000,http://127.0.0.1:5173,http://127.0.0.1:3000,http://127.0.0.1:4173,http://127.0.0.1:4000,http://127.0.0.1:5000,https://pro-yiedie.vercel.app",
     ),
     TRUST_PROXY: Joi.number().integer().min(0).max(5).default(0),
     COOKIE_SAME_SITE: Joi.string()
