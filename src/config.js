@@ -39,7 +39,10 @@ export function readConfig(env = process.env) {
     PORT: Joi.number().integer().min(0).max(65535).default(4000),
     HOST: Joi.string().default("127.0.0.1"),
     DATABASE_URL: Joi.string()
-      .uri({ scheme: ["postgres", "postgresql"] })
+      .pattern(/^postgres(?:ql)?:\/\/.+$/i)
+      .message(
+        '"DATABASE_URL" must be a valid postgres or postgresql connection string',
+      )
       .required(),
     SESSION_SECRET: Joi.string().required(),
     CLIENT_ORIGINS: Joi.string().default(
