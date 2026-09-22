@@ -38,12 +38,12 @@ export function readConfig(env = process.env) {
       .default("development"),
     PORT: Joi.number().integer().min(0).max(65535).default(4000),
     HOST: Joi.string().default("127.0.0.1"),
-    DATABASE_URL: Joi.string()
-      .pattern(/^postgres(?:ql)?:\/\/.+$/i)
-      .message(
-        `"DATABASE_URL ${value.DATABASE_URL} " must be a valid postgres or postgresql connection string`,
-      )
-      .required(),
+    // DATABASE_URL: Joi.string()
+    //   .pattern(/^postgres(?:ql)?:\/\/.+$/i)
+    //   .message(
+    //     `"DATABASE_URL ${value.DATABASE_URL} " must be a valid postgres or postgresql connection string`,
+    //   )
+    //   .required(),
     SESSION_SECRET: Joi.string().required(),
     CLIENT_ORIGINS: Joi.string().default(
       "http://localhost:5173,http://localhost:3000,http://localhost:4173,http://localhost:4000,http://localhost:5000,http://127.0.0.1:5173,http://127.0.0.1:3000,http://127.0.0.1:4173,http://127.0.0.1:4000,http://127.0.0.1:5000",
